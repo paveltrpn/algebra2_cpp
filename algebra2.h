@@ -334,6 +334,38 @@ constexpr int32_t id_cw(int32_t i, int32_t j, int32_t n) {
 	return (j*n + i);
 };
 
+void   vec2_show(const vec2_t &v);
+float  vec2_lenght(const vec2_t &v);
+vec2_t vec2_normalize(const vec2_t &v);
+vec2_t vec2_scale(const vecT_t &v,const float scale);
+vec2_t vec_invert(const vecT_t &v);
+float  vec2_dot(const vecT_t &a, const vecT_t &b);
+vec2_t vec_sum(const vecT_t &a, const vecT_t &b);
+vec2_t vec2_sub(const vecT_t &a, const vecT_t &b);
+
+void   vec3_show(vec3_t &v);
+vec3_t vec3_copy(vec3_t &v);
+vec3_t vec3_set(float x, float y, float z);
+float  vec3_lenght(vec3_t &v);
+vec3_t vec3_normalize(vec3_t &v);
+vec3_t vec3_scale(vec3_t &v, float scale);
+vec3_t vec3_invert(vec3_t &v);
+float  vec3_dot(vec3_t &a, vec3_t &a);
+vec3_t vec3_sum(vec3_t &a, vec3_t &b);
+vec3_t vec3_sub(vec3_t &a, vec3_t &b);
+vec3_t vec3_cross(vec3_t &a, vec3_t &b);
+
+void   vec4_show(vec4_t &v)
+vec4_t vec4_copy(v vec4_t) 
+vec4_t vec4_set(float x, float y, float z, float w)
+float  vec4_lenght(vec4_t &v)
+vec4_t vec4_normalize(vec4_t &v) 
+vec4_t vec4_scale(vec4_t &v, float sclae)
+vec4_t vec4_invert(vec4_t &v)
+float  vec4_dot(vec4_t &a, vec4_t &b)
+vec4_t vec4Sum(a, b vec4_t) 
+vec4_t vec4Sub(vec4_t &a, vec4_t &b)
+
 void 	qtnn_show(const qtnn_t &q); 
 float	qtnn_lenght(const qtnn_t &q);
 qtnn_t	qtnn_normalize(const qtnn_t &q);
