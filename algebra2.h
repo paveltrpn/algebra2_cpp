@@ -388,6 +388,9 @@ mtrx3_t mtrx3_set(float m[4]);
 mtrx3_t mtrx3_set_float(float a00, float a01, float a02,
 	                    float a10, float a11, float a12,
 	                    float a20, float a21, float a22);
+mtrx3_t mtrx3_set_yaw(float angl);
+mtrx3_t mtrx3_set_pitch(float angl);
+mtrx3_t mtrx3_set_roll(float angl);
 void  mtrx3_show(mtrx3_t m);
 float mtrx3_det(mtrx3_t m);
 float mtrx3_det_lu(mtrx3_t m); 
@@ -399,7 +402,7 @@ mtrx3_t mtrx3Transpose(mtrx3_t m);
 mtrx3_t mtrx3_invert(mtrx3_t m);
 vec3_t  mtrx3_solve_gauss(mtrx3_t m, vec3_t v);
 mtrx3_t mtrx3_insert_cmn(mtrx3_t m, vec3_t v, int cmn);
-vec2_t  mtrx3_solve_kramer(mtrx3_t m, vec3_t v);
+vec3_t  mtrx3_solve_kramer(mtrx3_t m, vec3_t v);
 
 mtrx4_t mtrx4_idtt();
 mtrx4_t mtrx4_set(float m[16]);
@@ -410,7 +413,7 @@ mtrx4_t mtrx4_set_float(float a00, float a01, float a02, float a03,
 void mtrx4_show(mtrx4_t m);
 float mtrx4_det_lu(mtrx4_t m);
 mtrx4_t mtrx4_mult(mtrx4_t a, mtrx4_t b);
-vec3_t mtrx4_mult_vec(mtrx4_t m, vec3_t v);
+vec4_t mtrx4_mult_vec(mtrx4_t m, vec3_t v);
 tuple<mtrx4_t, mtrx4_t> mtrx4_lu(mtrx4_t m);
 tuple<mtrx4_t, vec4_t> mtrx4_ldlt(mtrx4_t m);
 mtrx4_t mtrx3_transpose(mtrx4_t m);

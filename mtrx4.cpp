@@ -106,6 +106,7 @@ mtrx4_t mtrx4_set_float(float a00, float a01, float a02, float a03,
 	                    float a10, float a11, float a12, float a13,
 	                    float a20, float a21, float a22, float a23,
 	                    float a30, float a31, float a32, float a33) {
+	mtrx4_t rt;
 
 	rt[0] = a00;
 	rt[1] = a01;
@@ -131,10 +132,10 @@ mtrx4_t mtrx4_set_float(float a00, float a01, float a02, float a03,
 }
 
 void mtrx4_show(mtrx4_t m) {
-	printf("%5.2f %5.2f %5.2f %5.2f\n", m[0], m[1], m[2], m[3])
-	printf("%5.2f %5.2f %5.2f %5.2f\n", m[4], m[5], m[6], m[7])
-	printf("%5.2f %5.2f %5.2f %5.2f\n", m[8], m[9], m[10], m[11])
-	printf("%5.2f %5.2f %5.2f %5.2f\n", m[12], m[13], m[14], m[15])
+	printf("%5.2f %5.2f %5.2f %5.2f\n", m[0], m[1], m[2], m[3]);
+	printf("%5.2f %5.2f %5.2f %5.2f\n", m[4], m[5], m[6], m[7]);
+	printf("%5.2f %5.2f %5.2f %5.2f\n", m[8], m[9], m[10], m[11]);
+	printf("%5.2f %5.2f %5.2f %5.2f\n", m[12], m[13], m[14], m[15]);
 }
 
 float mtrx4_det_lu(mtrx4_t m) {
@@ -159,12 +160,12 @@ float mtrx4_det_lu(mtrx4_t m) {
 
 mtrx4_t mtrx4_mult(mtrx4_t a, mtrx4_t b) {
 	constexpr int mrange = 4;
-	int i, j, k int32;
+	int i, j, k;
 	float tmp;
     mtrx4_t rt;
 
 	for (i = 0; i < mrange; i++) {
-		(for j = 0; j < mrange; j++) {
+		for (j = 0; j < mrange; j++) {
 			tmp = 0.0;
 			for (k = 0; k < mrange; k++) {
 				tmp = tmp + a[id_rw(k, j, mrange)]*b[id_rw(i, k, mrange)];
@@ -176,10 +177,11 @@ mtrx4_t mtrx4_mult(mtrx4_t a, mtrx4_t b) {
 	return rt;
 }
 
-vec3_t mtrx4_mult_vec(mtrx4_t m, vec3_t v) {
+vec4_t mtrx4_mult_vec(mtrx4_t m, vec3_t v) {
 	constexpr int mrange = 4;
 	int		i, j;
 	float	tmp;
+	vec4_t rt;
 
 	for (i = 0; i < mrange; i++) {
 		tmp = 0;
@@ -224,13 +226,13 @@ tuple<mtrx4_t, mtrx4_t> mtrx4_lu(mtrx4_t m) {
 		}
 	}
 
-	return lm, um;
+	return {lm, um};
 }
 
 tuple<mtrx4_t, vec4_t> mtrx4_ldlt(mtrx4_t m) {
 	constexpr int mrange = 4;
 	mtrx4_t lm;
-	vec3_t dv;
+	vec4_t dv;
 	int i, j, k;
 	float sum;   
 
@@ -241,8 +243,8 @@ tuple<mtrx4_t, vec4_t> mtrx4_ldlt(mtrx4_t m) {
 				sum = sum - lm[id_rw(i, k, mrange)]*dv[k]*lm[id_rw(j, k, mrange)];
 				if (i == j) {
 					if (sum <= 0) {
-						printf("mtrx4_ldlt(): matrix is not positive deﬁnite")
-						return mtrx4_idtt(), vec4_t(0.0, 0.0);
+						printf("mtrx4_ldlt(): matrix is not positive deﬁnite");
+						return {mtrx4_idtt(), vec4_t(0.0, 0.0, 0.0, 0.0)};
 					}
 					dv[i] = sum;
 					lm[id_rw(i, i, mrange)] = 1.0;
@@ -253,7 +255,7 @@ tuple<mtrx4_t, vec4_t> mtrx4_ldlt(mtrx4_t m) {
 		}
 	}
 
-	return lm, dv;
+	return {lm, dv};
 }
 
 mtrx4_t mtrx3_transpose(mtrx4_t m) {
@@ -278,8 +280,7 @@ mtrx4_t mtrx3_transpose(mtrx4_t m) {
 vec4_t mtrx4_solve_gauss(mtrx4_t m, vec4_t v) {
 	constexpr int mrange = 4;
 	int i, j, k;
-	t float;
-	float a[mrange][mrange + 1];
+	float a[mrange][mrange + 1], t;
     vec4_t rt;
 
 	for (i = 0; i < mrange; i++) { //было ++i

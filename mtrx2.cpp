@@ -125,6 +125,7 @@ mtrx2_t mtrx2_mult(mtrx2_t a, mtrx2_t b) {
 
 vec2_t mtrx2_mult_vec(mtrx2_t m, vec2_t v) {
 	constexpr int mrange = 2;
+	vec2_t rt;
 
 	int		i, j;
 	float	tmp;
@@ -153,7 +154,7 @@ tuple<mtrx2_t, mtrx2_t> mtrx2_lu(mtrx2_t m) {
 	for (i = 0; i < mrange; i++) {
 		for (k = i; k < mrange; k++) {
 			sum = 0;
-			(for j = 0; j < i; j++) {
+			for (j = 0; j < i; j++) {
 				sum += (lm[id_rw(i, j, mrange)] * um[id_rw(j, k, mrange)]);
 			}
 			um[id_rw(i, k, mrange)] = m[id_rw(i, k, mrange)] - sum;
@@ -189,8 +190,8 @@ tuple<mtrx2_t, vec2_t> mtrx2_ldlt(mtrx2_t m) {
 				sum = sum - lm[id_rw(i, k, mrange)]*dv[k]*lm[id_rw(j, k, mrange)];
 				if (i == j) {
 					if (sum <= 0) {
-						printf("mtrx2_ldlt(): matrix is not positive deﬁnite")
-						return mtrx2_idtt(), vec2_t(0.0, 0.0);
+						printf("mtrx2_ldlt(): matrix is not positive deﬁnite");
+						return {mtrx2_idtt(), vec2_t(0.0, 0.0)};
 					}
 					dv[i] = sum;
 					lm[id_rw(i, i, mrange)] = 1.0;
@@ -201,7 +202,7 @@ tuple<mtrx2_t, vec2_t> mtrx2_ldlt(mtrx2_t m) {
 		}
 	}
 
-	return lm, dv;
+	return {lm, dv};
 }
 
 mtrx2_t mtrx2_transpose(mtrx2_t m) {
@@ -227,10 +228,10 @@ mtrx2_t mtrx2_invert(mtrx2_t m) {
 	mtrx2_t rt;
 	float det;
 	
-	det = mtrx2Det(m);
+	det = mtrx2_det(m);
 
 	if (fabs(det) < f_eps) {
-		println("mtrx_invert(): determinant is a zero!");
+		printf("mtrx2_invert(): determinant is a zero!");
 		return mtrx2_idtt();
 	}
 
@@ -240,8 +241,8 @@ mtrx2_t mtrx2_invert(mtrx2_t m) {
 vec2_t mtrx2_solve_gauss(mtrx2_t m, vec2_t v) {
 	constexpr int mrange = 2;
 	int i, j, k;
-	t float;
-	float a[mrange][mrange + 1];
+	float a[mrange][mrange + 1], t;
+	vec2_t rt;
 
 	for (i = 0; i < mrange; i++) { //было ++i
 		for (j = 0; j < mrange; j++) { //было ++j
@@ -304,8 +305,9 @@ vec2_t mtrx2_solve_kramer(mtrx2_t m, vec2_t v) {
 	int i;
 	float det;
 	mtrx2_t kr_mtrx;
+	vec2_t rt;
 
-	det = mtrx2_det(m)
+	det = mtrx2_det(m);
 
 	if (fabs(det) < f_eps) {
 		printf("mtrx2_solve_kramer(): system has no solve");
