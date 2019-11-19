@@ -1,5 +1,5 @@
 
-#include "algebra.h"
+#include "algebra2.h"
 
 plane_t::plane_t(const vec3_t &v, float d) {
 

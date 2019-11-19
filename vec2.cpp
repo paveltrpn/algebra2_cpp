@@ -18,20 +18,19 @@ float vec2_lenght(const vec2_t &v) {
 vec2_t vec2_normalize(const vec2_t &v) {
 	vec2_t rt;
 	float len;
+	
+	len = vec2_lenght(v);
 
-	len = vec_lenght(v);
-
-	if (len != 0.0) {
-		for (int i = 0; i < range; i++) {
-			rt[i] = v[i] / len;
-		}
+	if (len != 0.0f) {
+		rt[_XC] = v[_XC] / len;
+		rt[_YC] = v[_YC] / len;
 	}
 
 	return rt;
 }
 
-vec2_t	vec2_scale(const vecT_t &v,const float scale) {
-	vecT_t rt;
+vec2_t	vec2_scale(const vec2_t &v,const float scale) {
+	vec2_t rt;
 
 	rt[0] = v[0] * scale;
 	rt[1] = v[1] * scale;
@@ -39,7 +38,7 @@ vec2_t	vec2_scale(const vecT_t &v,const float scale) {
 	return rt;
 }
 
-vec2_t vec_invert(const vecT_t &v) {
+vec2_t vec_invert(const vec2_t &v) {
 	vec2_t rt;
 
 	rt[0] = -v[0];
@@ -48,7 +47,7 @@ vec2_t vec_invert(const vecT_t &v) {
 	return rt;
 }
 
-float vec2_dot(const vecT_t &a, const vecT_t &b) {
+float vec2_dot(const vec2_t &a, const vec2_t &b) {
 	float rt = 0;
 
 	rt = rt + a[0] * b[0] + a[1] * b[1];
@@ -56,8 +55,8 @@ float vec2_dot(const vecT_t &a, const vecT_t &b) {
 	return rt;
 }
 
-vec2_t vec_sum(const vecT_t &a, const vecT_t &b) {
-	vecT_t rt;
+vec2_t vec_sum(const vec2_t &a, const vec2_t &b) {
+	vec2_t rt;
 
 	rt[0] = a[0] + b[0];
 	rt[1] = a[1] + b[1];
@@ -65,8 +64,8 @@ vec2_t vec_sum(const vecT_t &a, const vecT_t &b) {
 	return rt;
 }
 
-vec2_t vec2_sub(const vecT_t &a, const vecT_t &b) {
-	vecT_t rt;
+vec2_t vec2_sub(const vec2_t &a, const vec2_t &b) {
+	vec2_t rt;
 
 	rt[0] = a[0] - b[0];
 	rt[1] = a[1] - b[1];

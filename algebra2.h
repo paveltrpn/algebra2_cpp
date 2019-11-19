@@ -337,11 +337,11 @@ constexpr int32_t id_cw(int32_t i, int32_t j, int32_t n) {
 void   vec2_show(const vec2_t &v);
 float  vec2_lenght(const vec2_t &v);
 vec2_t vec2_normalize(const vec2_t &v);
-vec2_t vec2_scale(const vecT_t &v,const float scale);
-vec2_t vec_invert(const vecT_t &v);
-float  vec2_dot(const vecT_t &a, const vecT_t &b);
-vec2_t vec_sum(const vecT_t &a, const vecT_t &b);
-vec2_t vec2_sub(const vecT_t &a, const vecT_t &b);
+vec2_t vec2_scale(const vec2_t &v,const float scale);
+vec2_t vec2_invert(const vec2_t &v);
+float  vec2_dot(const vec2_t &a, const vec2_t &b);
+vec2_t vec2_sum(const vec2_t &a, const vec2_t &b);
+vec2_t vec2_sub(const vec2_t &a, const vec2_t &b);
 
 void   vec3_show(vec3_t &v);
 vec3_t vec3_copy(vec3_t &v);
@@ -350,21 +350,73 @@ float  vec3_lenght(vec3_t &v);
 vec3_t vec3_normalize(vec3_t &v);
 vec3_t vec3_scale(vec3_t &v, float scale);
 vec3_t vec3_invert(vec3_t &v);
-float  vec3_dot(vec3_t &a, vec3_t &a);
+float  vec3_dot(vec3_t &a, vec3_t &b);
 vec3_t vec3_sum(vec3_t &a, vec3_t &b);
 vec3_t vec3_sub(vec3_t &a, vec3_t &b);
 vec3_t vec3_cross(vec3_t &a, vec3_t &b);
 
-void   vec4_show(vec4_t &v)
-vec4_t vec4_copy(v vec4_t) 
-vec4_t vec4_set(float x, float y, float z, float w)
-float  vec4_lenght(vec4_t &v)
-vec4_t vec4_normalize(vec4_t &v) 
-vec4_t vec4_scale(vec4_t &v, float sclae)
-vec4_t vec4_invert(vec4_t &v)
-float  vec4_dot(vec4_t &a, vec4_t &b)
-vec4_t vec4Sum(a, b vec4_t) 
-vec4_t vec4Sub(vec4_t &a, vec4_t &b)
+void   vec4_show(vec4_t &v);
+vec4_t vec4_copy(vec4_t &v);
+vec4_t vec4_set(float x, float y, float z, float w);
+float  vec4_lenght(vec4_t &v);
+vec4_t vec4_normalize(vec4_t &v);
+vec4_t vec4_scale(vec4_t &v, float scale);
+vec4_t vec4_invert(vec4_t &v);
+float  vec4_dot(vec4_t &a, vec4_t &b);
+vec4_t vec4_sum(vec4_t a, vec4_t b); 
+vec4_t vec4Sub(vec4_t &a, vec4_t &b);
+
+mtrx2_t mtrx2_idtt();
+mtrx2_t mtrx2_set(float m[4]);
+mtrx2_t mtrx2_set_float(float a00, float a01, float a10, float a11);
+mtrx2_t mtrx2_rtn(float phi);
+void 	mtrx2_show(mtrx2_t m);
+float 	mtrx2_det(mtrx2_t m); 
+float   mtrx2_det_lu(mtrx2_t m);
+mtrx2_t mtrx2_mult(mtrx2_t a, mtrx2_t b);
+vec2_t  mtrx2_mult_vec(mtrx2_t m, vec2_t v);
+tuple<mtrx2_t, mtrx2_t> mtrx2_lu(mtrx2_t m);
+tuple<mtrx2_t, vec2_t> mtrx2_ldlt(mtrx2_t m);
+mtrx2_t mtrx2Transpose(mtrx2_t m);
+mtrx2_t mtrx2Invert(mtrx2_t m);
+vec2_t  mtrx2_solve_gauss(mtrx2_t m, vec2_t v);
+mtrx2_t mtrx2_insert_cmn(mtrx2_t m, vec3_t v, int cmn);
+vec2_t  mtrx2_solve_kramer(mtrx2_t m, vec3_t v);
+
+mtrx3_t mtrx3_idtt();
+mtrx3_t mtrx3_set(float m[4]);
+mtrx3_t mtrx3_set_float(float a00, float a01, float a02,
+	                    float a10, float a11, float a12,
+	                    float a20, float a21, float a22);
+void  mtrx3_show(mtrx3_t m);
+float mtrx3_det(mtrx3_t m);
+float mtrx3_det_lu(mtrx3_t m); 
+mtrx3_t mtrx3_mult(mtrx3_t a, mtrx3_t b);
+vec3_t  mtrx3_mult_vec(mtrx3_t m, vec3_t v);
+tuple<mtrx3_t, mtrx3_t> mtrx3_lu(mtrx3_t m);
+tuple<mtrx3_t, vec3_t> mtrx3_ldlt(mtrx3_t m);
+mtrx3_t mtrx3Transpose(mtrx3_t m);
+mtrx3_t mtrx3_invert(mtrx3_t m);
+vec3_t  mtrx3_solve_gauss(mtrx3_t m, vec3_t v);
+mtrx3_t mtrx3_insert_cmn(mtrx3_t m, vec3_t v, int cmn);
+vec2_t  mtrx3_solve_kramer(mtrx3_t m, vec3_t v);
+
+mtrx4_t mtrx4_idtt();
+mtrx4_t mtrx4_set(float m[16]);
+mtrx4_t mtrx4_set_float(float a00, float a01, float a02, float a03,
+	                    float a10, float a11, float a12, float a13,
+	                    float a20, float a21, float a22, float a23,
+	                    float a30, float a31, float a32, float a33);
+void mtrx4_show(mtrx4_t m);
+float mtrx4_det_lu(mtrx4_t m);
+mtrx4_t mtrx4_mult(mtrx4_t a, mtrx4_t b);
+vec3_t mtrx4_mult_vec(mtrx4_t m, vec3_t v);
+tuple<mtrx4_t, mtrx4_t> mtrx4_lu(mtrx4_t m);
+tuple<mtrx4_t, vec4_t> mtrx4_ldlt(mtrx4_t m);
+mtrx4_t mtrx3_transpose(mtrx4_t m);
+vec4_t mtrx4_solve_gauss(mtrx4_t m, vec4_t v);
+mtrx4_t mtrx4_insert_cmn(mtrx4_t m, vec4_t v, int cmn);
+vec4_t mtrx4_solve_kramer(mtrx4_t m, vec4_t v); 
 
 void 	qtnn_show(const qtnn_t &q); 
 float	qtnn_lenght(const qtnn_t &q);
