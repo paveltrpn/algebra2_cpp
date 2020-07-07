@@ -100,8 +100,8 @@ vec3_t vec3_cross(vec3_t &a, vec3_t &b) {
     vec3_t rt;
 
 	rt[0] = a[_YC]*b[_ZC] - a[_ZC]*b[_YC];
-	rt[0] = a[_ZC]*b[_XC] - a[_XC]*b[_ZC];
-	rt[0] = a[_XC]*b[_YC] - a[_YC]*b[_XC];
+	rt[1] = a[_ZC]*b[_XC] - a[_XC]*b[_ZC];
+	rt[2] = a[_XC]*b[_YC] - a[_YC]*b[_XC];
 
 	return rt;
 }
