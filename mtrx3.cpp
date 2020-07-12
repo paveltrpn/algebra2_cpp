@@ -2,7 +2,8 @@
 #include <iostream>
 #include <tuple>
 #include <cmath>
-#include "algebra2.h"
+
+#include "mtrx3.h"
 
 using namespace std;
 

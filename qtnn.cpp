@@ -2,7 +2,8 @@
 #include <iostream>
 #include <tuple>
 #include <cmath>
-#include "algebra2.h"
+
+#include "qtnn.h"
 
 void qtnn_show(const qtnn_t &q) {
 	printf("%5.2f %5.2f %5.2f %5.2f\n", q[_XC], q[_YC], q[_ZC], q[_WC]);

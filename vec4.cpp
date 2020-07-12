@@ -2,7 +2,8 @@
 #include <iostream>
 #include <tuple>
 #include <cmath>
-#include "algebra2.h"
+
+#include "vec4.h"
 
 using namespace std;
 

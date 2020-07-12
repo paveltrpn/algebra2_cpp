@@ -4,14 +4,14 @@ CFLAGS   := -Wall -std=c++17
 LIBS 	 := -lstdc++
 RM       := rm -f
 
-SRCS := mtrx2.o mtrx3.o mtrx4.o vec2.o vec3.o vec4.o qtnn.cpp plane.cpp
+SRCS := mtrx2.o mtrx3.o mtrx4.o vec2.o vec3.o vec4.o qtnn.cpp plane.cpp cmplx.cpp
 OBJS := $(SRCS:.cpp=.o)
 
 $(info COMMON MAKEFILE)
 
 all: compile
 
-compile: mtrx2.o mtrx3.o mtrx4.o vec2.o vec3.o vec4.o qtnn.o plane.o
+compile: mtrx2.o mtrx3.o mtrx4.o vec2.o vec3.o vec4.o qtnn.o plane.o cmplx.o
 
 mtrx2.o: mtrx2.cpp
 	$(CC) $(CFLAGS) -c mtrx2.cpp
@@ -36,3 +36,6 @@ qtnn.o: qtnn.cpp
 
 plane.o: plane.cpp
 	$(CC) $(CFLAGS) -c plane.cpp
+
+cmplx.o: cmplx.cpp
+	$(CC) $(CFLAGS) -c cmplx.cpp

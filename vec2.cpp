@@ -2,10 +2,10 @@
 #include <iostream>
 #include <tuple>
 #include <cmath>
-#include "algebra2.h"
+
+#include "vec2.h"
 
 using namespace std;
-
 
 void vec2_show(const vec2_t &v) {
 	printf("%5.2f %5.2f\n", v[0], v[1]);
