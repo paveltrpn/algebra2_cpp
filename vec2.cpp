@@ -1,6 +1,5 @@
 
 #include <iostream>
-#include <tuple>
 #include <cmath>
 
 #include "vec2.h"
@@ -30,46 +29,22 @@ vec2_t vec2_normalize(const vec2_t &v) {
 }
 
 vec2_t	vec2_scale(const vec2_t &v,const float scale) {
-	vec2_t rt;
-
-	rt[0] = v[0] * scale;
-	rt[1] = v[1] * scale;
-	
-	return rt;
+	return vec2_t(v[0] * scale, v[1] * scale);
 }
 
 vec2_t vec_invert(const vec2_t &v) {
-	vec2_t rt;
-
-	rt[0] = -v[0];
-	rt[1] = -v[1];
-
-	return rt;
+	return vec2_t(-v[0], -v[1]);
 }
 
 float vec2_dot(const vec2_t &a, const vec2_t &b) {
-	float rt = 0;
-
-	rt = rt + a[0] * b[0] + a[1] * b[1];
-	
-	return rt;
+	return a[0] * b[0] + a[1] * b[1];;
 }
 
 vec2_t vec_sum(const vec2_t &a, const vec2_t &b) {
-	vec2_t rt;
-
-	rt[0] = a[0] + b[0];
-	rt[1] = a[1] + b[1];
-
-	return rt;
+	return vec2_t(a[0] + b[0], a[1] + b[1]);
 }
 
 vec2_t vec2_sub(const vec2_t &a, const vec2_t &b) {
-	vec2_t rt;
-
-	rt[0] = a[0] - b[0];
-	rt[1] = a[1] - b[1];
-
-	return rt;
+	return vec2_t(a[0] - b[0], a[1] - b[1]);
 }
 

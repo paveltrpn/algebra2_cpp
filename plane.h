@@ -2,7 +2,6 @@
 #pragma once
 
 #include <cmath>
-#include <tuple>
 
 #include "algebra2_common.h"
 #include "vec3.h"

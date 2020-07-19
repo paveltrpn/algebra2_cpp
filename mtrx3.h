@@ -5,7 +5,6 @@
 #include <tuple>
 
 #include "algebra2_common.h"
-#include "vec2.h"
 #include "vec3.h"
 
 using namespace std;

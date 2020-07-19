@@ -1,4 +1,6 @@
 
+#include <cmath>
+
 #include "plane.h"
 
 plane_t::plane_t(const vec3_t &v, float d) {

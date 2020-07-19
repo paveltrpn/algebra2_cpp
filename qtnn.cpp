@@ -1,6 +1,5 @@
 
 #include <iostream>
-#include <tuple>
 #include <cmath>
 
 #include "qtnn.h"

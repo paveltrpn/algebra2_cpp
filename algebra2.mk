@@ -4,7 +4,7 @@ CFLAGS   := -Wall -std=c++17
 LIBS 	 := -lstdc++
 RM       := rm -f
 
-SRCS := mtrx2.o mtrx3.o mtrx4.o vec2.o vec3.o vec4.o qtnn.cpp plane.cpp cmplx.cpp
+SRCS := mtrx2.cpp mtrx3.cpp mtrx4.cpp vec2.o vec3.cpp vec4.cpp qtnn.cpp plane.cpp cmplx.cpp
 OBJS := $(SRCS:.cpp=.o)
 
 $(info COMMON MAKEFILE)
